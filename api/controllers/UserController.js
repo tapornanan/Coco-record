@@ -31,9 +31,8 @@ module.exports = {
               console.log(err);
 
             }else{
-              return res.view('user/login',{
-                User: user_data,
-              });
+              
+              return res.redirect('/login');
             }
           });
         });
@@ -46,6 +45,35 @@ module.exports = {
   },
 
   verifyUser: function (req, res){
+    console.log(">Verify User<");
+    var email = req.param("email");
+    var _password = req.param("password");
+
+    console.log("Email: " + email);
+    User.findOne({User_Email: email}).exec(function (err, result){
+      if (err){
+        console.log("User does not exist.");
+        return res.json({ error : err });
+      }else{
+        console.log("Found user record" + result);
+        if ( result.length != 0 ){
+          console.log(result.User_Password);
+          var bcrypt = require('bcrypt');
+
+          bcrypt.compare(_password, result.User_Password, function(err, resultConfirm){
+            if ( err ) {
+              console.log("Error while checking password.");
+              return res.json({ error : err });
+            }else if (resultConfirm){
+              console.log("Password is correct. Valid user login :)");
+              return res.json({ User_Login : result });
+            }else{
+              console.log("Password is not matched");
+            }
+          });
+        }
+      }
+    });
 
   }
 

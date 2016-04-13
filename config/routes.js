@@ -47,6 +47,10 @@ module.exports.routes = {
   '/login': {
     controller: "UserController",
     action: "loginView"
+  },
+  'post /verifyUser': {
+    controller: "UserController",
+    action: "verifyUser"
   }
 
   /***************************************************************************

@@ -9,7 +9,8 @@ module.exports = {
     },
     User_Email: {
       type: 'string',
-      required: true
+      required: true,
+      unique: true
     },
     User_Password: {
       type: 'string',
