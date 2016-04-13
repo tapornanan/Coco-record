@@ -1,0 +1,6 @@
+.wrap-center {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+}

@@ -1,0 +1,15 @@
+<div class="wrap-center">
+  <h1>Login</h1>
+  <form action="/verifyUser" method="post">
+    <div class="form-group">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" class="form-control" value="<%= User.User_Email %>" name="email"><br>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" class="form-control" name="password"><br>
+
+      <button class="btn btn-default">submit</button>
+    </div>
+  </form>
+</div>
