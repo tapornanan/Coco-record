@@ -10,7 +10,11 @@ module.exports = {
     },
     Garden_Type: {
       type: 'string',
-      
+
+    },
+
+    User_id : {
+      model: 'user',
     }
   }
 };

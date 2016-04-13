@@ -6,6 +6,13 @@ module.exports = {
     },
     Note: {
       type: 'string'
+    },
+
+    User_id: {
+      model: 'user',
+    },
+    Garden_id: {
+      model: 'gardens',
     }
   }
 };

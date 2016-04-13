@@ -15,6 +15,17 @@ module.exports = {
     User_Password: {
       type: 'string',
       required: true
-    }
+    },
+
+    // Garden: {
+    //   collection: 'garden',
+    //   via: 'owner'
+    // },
+    // Sale_Record: {
+    //   collection: 'sale_record',
+    //   via: 'owner'
+    // }
+
+
   }
 };
