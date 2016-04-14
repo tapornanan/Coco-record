@@ -1,11 +1,16 @@
-<div class="container">
-  <div class="user-data">
-    <h1>Welcome, <%= User_Data.User_Name %></h1>
-  </div>
-  <div class="row">
-    <div class="create-garden col-md-12">
-      <a href="/garden/create/<%= User_Data.id %>">Create new garden</a>
-    </div>
-  </div>
 
-</div>
+    <input type="hidden" value="<%= User_Data.User_Name %>" name="name">
+    <input type="hidden" value="<%= User_Data.User_Email %>" name="email">
+    <input type="hidden" value="<%= User_Data.id %>" name="user_id">
+
+    <div class="container">
+    <div class="user-data">
+      <h1>Welcome, <%= User_Data.User_Name %></h1>
+    </div>
+    <div class="row">
+      <div class="create-garden col-md-12">
+        
+      </div>
+    </div>
+
+  </div>

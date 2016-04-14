@@ -7,14 +7,14 @@ module.exports = {
 
   insertUser: function (req, res){
     console.log(">INSERT USER<");
-    var _name = req.param("name");
+    var _email = req.param("email");
     var _password = req.param("password");
     var bcrypt = require('bcryptjs');
 
     bcrypt.genSalt(10, function(err, salt){
       bcrypt.hash(_password, salt, function(err, hashPassword){
-        bcrypt.hash(_name, salt, function(err, hashName){
-          _name = hashName;
+        bcrypt.hash(_email, salt, function(err, hashEmail){
+          _email = hashEmail;
           _password = hashPassword;
 
           var user_data = {
@@ -22,17 +22,17 @@ module.exports = {
             User_Last_name: req.param("last_name"),
             User_Email: req.param("email"),
             User_Password: _password,
+            User_Token: _email,
           };
 
           console.log(user_data);
 
           User.create(user_data).exec(function createUser(err, created){
-            console.log('Insert user into DB');
             if (err) {
               console.log(err);
-
+              return res.redirect('user/create');
             }else{
-
+              console.log('Insert user into DB');
               return res.redirect('/login');
             }
           });
@@ -67,9 +67,14 @@ module.exports = {
               return res.json({ error : err });
             }else if (resultConfirm){
               console.log("Password is correct. Valid user login :)");
-              req.session.userid = result.id;
-              
+
+              // set session
+              req.session.userId = result.id;   // returned from a database
+              console.log(req.session);
+
+
               return res.view('home',{ User_Data : result });
+              // return res.redirect('/home');
             }else{
               console.log("Password is not matched");
               return res.json({ error : resultConfirm });
@@ -79,6 +84,10 @@ module.exports = {
       }
     });
 
+  },
+
+  homepage : function (req, res){
+    res.view('home');
   }
 
 };

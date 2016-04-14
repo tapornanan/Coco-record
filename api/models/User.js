@@ -16,14 +16,16 @@ module.exports = {
       type: 'string',
       required: true
     },
-
-    // Garden: {
-    //   collection: 'garden',
-    //   via: 'owner'
-    // },
-    // Sale_Record: {
-    //   collection: 'sale_record',
-    //   via: 'owner'
+    User_Token: {
+      type: 'string',
+      required: true
+    },
+    // toJSON: function() {
+    //   var obj = this.toObject();
+    //   delete obj.User_Password;
+    //   delete obj.User_Token;
+    //   delete obj._csrf;
+    //   return obj;
     // }
 
 
