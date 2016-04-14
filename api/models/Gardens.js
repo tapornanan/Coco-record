@@ -8,6 +8,9 @@ module.exports = {
       type: 'integer',
       require: true
     },
+    Number_Of_Trees: {
+      type: 'integer'
+    },
     Garden_Type: {
       type: 'string',
 

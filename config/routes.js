@@ -51,6 +51,10 @@ module.exports.routes = {
   'post /verifyUser': {
     controller: "UserController",
     action: "verifyUser"
+  },
+  'get /garden/create/:id': {
+    controller: "GardenController",
+    action: "createGardenView"
   }
 
   /***************************************************************************
