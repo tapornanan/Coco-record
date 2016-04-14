@@ -67,7 +67,9 @@ module.exports = {
               return res.json({ error : err });
             }else if (resultConfirm){
               console.log("Password is correct. Valid user login :)");
-              return res.json({ User_Login : result });
+              req.session.userid = result.id;
+              
+              return res.view('home',{ User_Data : result });
             }else{
               console.log("Password is not matched");
               return res.json({ error : resultConfirm });
