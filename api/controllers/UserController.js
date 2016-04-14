@@ -9,10 +9,11 @@ module.exports = {
     console.log(">INSERT USER<");
     var _name = req.param("name");
     var _password = req.param("password");
-    var bcrypt = require('bcrypt');
+    var bcrypt = require('bcryptjs');
+
     bcrypt.genSalt(10, function(err, salt){
-      bcrypt.hash(_name, salt, function(err, hashPassword){
-        bcrypt.hash(_password, salt, function(err, hashName){
+      bcrypt.hash(_password, salt, function(err, hashPassword){
+        bcrypt.hash(_name, salt, function(err, hashName){
           _name = hashName;
           _password = hashPassword;
 
@@ -31,7 +32,7 @@ module.exports = {
               console.log(err);
 
             }else{
-              
+
               return res.redirect('/login');
             }
           });
@@ -55,10 +56,10 @@ module.exports = {
         console.log("User does not exist.");
         return res.json({ error : err });
       }else{
-        console.log("Found user record" + result);
+        console.log("Found user record");
         if ( result.length != 0 ){
-          console.log(result.User_Password);
-          var bcrypt = require('bcrypt');
+          console.log(result);
+          var bcrypt = require('bcryptjs');
 
           bcrypt.compare(_password, result.User_Password, function(err, resultConfirm){
             if ( err ) {
@@ -69,6 +70,7 @@ module.exports = {
               return res.json({ User_Login : result });
             }else{
               console.log("Password is not matched");
+              return res.json({ error : resultConfirm });
             }
           });
         }
