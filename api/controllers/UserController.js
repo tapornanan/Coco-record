@@ -70,11 +70,13 @@ module.exports = {
 
               // set session
               req.session.userId = result.id;   // returned from a database
+              req.session.authenticated = true;
+              // res.send(req.session);
               console.log(req.session);
 
 
-              return res.view('home',{ User_Data : result });
-              // return res.redirect('/home');
+              // return res.view('home',{ User_Data : result });
+              return res.redirect('/home');
             }else{
               console.log("Password is not matched");
               return res.json({ error : resultConfirm });
@@ -87,7 +89,34 @@ module.exports = {
   },
 
   homepage : function (req, res){
-    res.view('home');
+    console.log(req.session.authenticated);
+
+    if (req.session.authenticated == false ){
+      return res.redirect('/login');
+    }else{
+        var user_id = req.session.userId;
+        User.findOne({id: user_id}).exec(function (err, result){
+          if (err){
+            console.log("error! (this user id doesn't exist.)");
+            return res.json({ error : err });
+          }else{
+            if ( result.length != 0 ){
+              console.log(result);
+
+
+              var user_data = {
+                User_Name : result.User_Name,
+                User_Email : result.User_Email,
+                User_id : result.id
+              };
+              return res.view('home',{ User_Data : user_data });
+            }
+
+          }
+        });
+    }
+
+
   }
 
 };

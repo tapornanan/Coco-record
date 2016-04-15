@@ -2,11 +2,11 @@ module.exports = {
   attributes: {
     Garden_Name: {
       type: 'string',
-      require: true
+      required: true
     },
     Garden_Area: {
       type: 'integer',
-      require: true
+      required: true
     },
     Number_Of_Trees: {
       type: 'integer'
