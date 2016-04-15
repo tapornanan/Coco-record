@@ -1,9 +1,9 @@
 <div class="container">
   <h1>Create Garden</h1>
-  <form action="#">
+  <form action="/insertGarden" method="post">
     <div class="form-group">
-
-      <input type="hidden" id="user_id" >
+      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+      <input type="hidden" name="user_id" value="<%= User_Data.User_id %>">
 
 
       <label for="garden_name">Garden name</label>

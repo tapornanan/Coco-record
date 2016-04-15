@@ -52,13 +52,17 @@ module.exports.routes = {
     controller: "UserController",
     action: "verifyUser"
   },
-  'get /garden/create/': {
+  'post /garden/create/': {
     controller: "GardenController",
     action: "create"
   },
   '/home': {
     controller: "UserController",
     action: "homepage"
+  },
+  'post /insertGarden': {
+    controller: "GardenController",
+    action: 'insert'
   }
 
   /***************************************************************************

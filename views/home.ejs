@@ -1,16 +1,17 @@
-
-    <input type="hidden" value="<%= User_Data.User_Name %>" name="name">
-    <input type="hidden" value="<%= User_Data.User_Email %>" name="email">
-    <input type="hidden" value="<%= User_Data.id %>" name="user_id">
-
-    <div class="container">
+<form action="/garden/create" method="post">
+  <input type="hidden" value="<%= User_Data.User_Name %>" name="name">
+  <input type="hidden" value="<%= User_Data.User_Email %>" name="email">
+  <input type="hidden" value="<%= User_Data.id %>" name="user_id">
+  <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+  <div class="container">
     <div class="user-data">
       <h1>Welcome, <%= User_Data.User_Name %></h1>
     </div>
     <div class="row">
       <div class="create-garden col-md-12">
-        
+        <button type="submit" class="btn btn-primary">Create garden</button>
       </div>
     </div>
 
   </div>
+</form>
