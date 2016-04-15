@@ -89,34 +89,39 @@ module.exports = {
   },
 
   homepage : function (req, res){
+    console.log(">Home page<");
     console.log(req.session.authenticated);
-
-    if (req.session.authenticated == false ){
+    console.log("user id: " + req.session.userId);
+    if (req.session.authenticated == null ){
       return res.redirect('/login');
     }else{
-        var user_id = req.session.userId;
-        User.findOne({id: user_id}).exec(function (err, result){
-          if (err){
-            console.log("error! (this user id doesn't exist.)");
-            return res.json({ error : err });
-          }else{
-            if ( result.length != 0 ){
-              console.log(result);
+      var user_id = req.session.userId;
+      User.findOne({id: user_id}).populateAll().exec(function (err, result){
+        if (err){
+          console.log("error! (this user id doesn't exist.)");
+          return res.json({ error : err });
+        }else{
+          if ( result.length != 0 ){
+            console.log(result);
 
+            var user_data = {
+              User_Name : result.User_Name,
+              User_Email : result.User_Email,
+              User_id : user_id
+            };
 
-              var user_data = {
-                User_Name : result.User_Name,
-                User_Email : result.User_Email,
-                User_id : result.id
-              };
-              return res.view('home',{ User_Data : user_data });
-            }
-
+            return res.view('home', { User_Data: result });
           }
-        });
+
+        }
+      });
     }
-
-
+  },
+  logout: function(req, res) {
+    console.log(">User logout...<");
+      req.session.destroy(function(err) {
+           return res.redirect('/');
+      });
   }
 
 };

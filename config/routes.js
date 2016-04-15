@@ -63,6 +63,10 @@ module.exports.routes = {
   'post /insertGarden': {
     controller: "GardenController",
     action: 'insert'
+  },
+  '/logout': {
+    controller: "UserController",
+    action: "logout"
   }
 
   /***************************************************************************

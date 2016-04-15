@@ -2,11 +2,16 @@ module.exports = {
 
   create: function(req, res){
     console.log(">Create garden view<");
-    var user_data = {
-      User_Name : req.param("name"),
-      User_Email : req.param("email"),
-      User_id : req.param("user_id")
-    };
+
+    if (req.session.authenticated == null ){
+      return res.redirect('/login');
+    }else{
+      var user_id = req.session.userId;
+      
+      var user_data = {
+        User_id : user_id
+      };
+    }
 
     console.log(user_data);
 

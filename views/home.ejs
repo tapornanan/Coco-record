@@ -1,17 +1,53 @@
-<form action="/garden/create" method="post">
-  <input type="hidden" value="<%= User_Data.User_Name %>" name="name">
-  <input type="hidden" value="<%= User_Data.User_Email %>" name="email">
-  <input type="hidden" value="<%= User_Data.id %>" name="user_id">
-  <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+
+  <!-- <input type="hidden" name="_csrf" value="<%= _csrf %>" /> -->
+<%
+  console.log(">Home View<")
+  console.log(User_Data);
+
+%>
+
+
   <div class="container">
     <div class="user-data">
-      <h1>Welcome, <%= User_Data.User_Name %></h1>
+      <div class="row">
+        <div class="col-md-8">
+          <h1>Welcome, <%= User_Data.User_Name %></h1>
+        </div>
+        <div class="col-md-4">
+          <div class="btn btn-red"><a href="/logout">Logout</a></div>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="create-garden col-md-12">
-        <button type="submit" class="btn btn-primary">Create garden</button>
+        <a href="/garden/create">Create new garden</a>
       </div>
-    </div>
+    </div><br>
+  <table class="table table-bordered">
+    <tr>
+      <th>#</th>
+      <th>Garden Name</th>
+      <th>Garden Area</th>
+      <th>Number of tree</th>
+      <th>Garden Type</th>
+      <th>New Record</th>
+    </tr>
+  <% var counter = 0; for(var i = 0; i < User_Data.Gardens.length; i++) { counter++;%>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= User_Data.Gardens[i].Garden_Name %></td>
+      <td><%= User_Data.Gardens[i].Garden_Area %></td>
+      <td><%= User_Data.Gardens[i].Number_Of_Trees %></td>
+      <td><%= User_Data.Gardens[i].Garden_Type %></td>
+      <td>
+        <button class="btn btn-success">Add Record</button>
+        <button class="btn btn-info">View Record</button>
+      </td>
+    </tr>
+
+  <%
+  }
+  %>
+  </table>
 
   </div>
-</form>

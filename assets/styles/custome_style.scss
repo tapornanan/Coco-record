@@ -5,10 +5,48 @@ all custome style stay here!
 
 */
 
-.wrap-center {
-  display: table;
-  margin: 0 auto;
-  text-align: center;
-  align-items: center;
+$red: #f15c5c;
+$main: #274c5e;
+$secondary: #7f9eb2;
 
+
+.wrap-center {
+  position: absolute; /* or absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-red {
+  margin: 20px;
+  background-color: $red ;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  &:hover {
+    background-color: darken($red, 20%);
+  }
+}
+
+.btn-normal {
+  background-color: $main;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  &:hover {
+    background-color: darken($main, 20%);
+  }
+}
+
+
+.card {
+  padding: 2rem 15rem;
+  background-color: $secondary;
+  border-radius: 5px;
 }
