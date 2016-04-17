@@ -1,0 +1,23 @@
+
+
+<div class="container">
+  <h1>Create new record</h1>
+  <form action="/insertRecord" method="post">
+    <div class="form-group">
+      <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+      <input type="hidden" name="user_id" value="<%= User_Data.User_id %>">
+      <input type="hidden" name="garden_id" value="<%= User_Data.Garden_id %>">
+
+      <label for="total_sale">Total Sale</label>
+      <input type="text" class="form-control" name="total_sale" ><br>
+
+      <label for="note">Note</label>
+      <input type="textarea" class="form-control" name="note"><br>
+
+
+
+      <button class="btn btn-default">Submit</button>
+
+    </div>
+  </form>
+</div>

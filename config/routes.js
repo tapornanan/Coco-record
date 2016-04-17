@@ -62,7 +62,15 @@ module.exports.routes = {
   },
   'post /insertGarden': {
     controller: "GardenController",
-    action: 'insert'
+    action: "insert"
+  },
+  '/record/new/:id': {
+    controller: "SaleController",
+    action: "insertView"
+  },
+  'post /insertRecord': {
+    controller: "SaleController",
+    action: "insertSaleRecord"
   },
   '/logout': {
     controller: "UserController",
