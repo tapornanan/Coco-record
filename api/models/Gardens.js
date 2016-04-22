@@ -18,6 +18,11 @@ module.exports = {
 
     User_id : {
       model: 'user',
+    },
+
+    Garden_id : {
+      collection: 'Sales',
+      via: 'Garden_id'
     }
   }
 };

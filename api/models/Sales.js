@@ -1,8 +1,8 @@
 module.exports = {
   attributes: {
     Total_Sale: {
-      type: 'float',
-      require: true
+      type: 'string',
+      required: true
     },
     Note: {
       type: 'string'

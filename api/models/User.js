@@ -24,6 +24,10 @@ module.exports = {
      collection: 'gardens',
      via: 'User_id'
    },
+    User_id: {
+      colllection: 'sales',
+      via: 'User_id'
+    }
     // toJSON: function() {
     //   var obj = this.toObject();
     //   delete obj.User_Password;

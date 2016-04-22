@@ -45,9 +45,9 @@ module.exports.connections = {
     host: 'localhost',
     port: 3306,
     user: 'root', //optional
-    password: 'root', //optional
-    database: 'cocoDB', //optional
-    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
+    password: '', //optional
+    database: 'cocodb', //optional
+    // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
   },
 
   /***************************************************************************
