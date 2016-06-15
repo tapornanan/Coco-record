@@ -75,6 +75,10 @@ module.exports.routes = {
   '/logout': {
     controller: "UserController",
     action: "logout"
+  },
+  '/record/show/:id': {
+    controller: "SaleController",
+    action: "viewSaleRecord"
   }
 
   /***************************************************************************

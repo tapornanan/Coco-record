@@ -51,6 +51,58 @@ module.exports = {
         });
       }
     }
+  },
+
+
+
+  viewSaleRecord: function (req, res) {
+    console.log(">View Sale Record...<");
+
+    if (req.session.authenticated == null ){
+      return res.redirect('/login');
+    }else{
+      var garden_id = req.param("id");
+      var user_id = req.session.userId;
+      var user_data = {
+        User_id : user_id,
+        Garden_id : garden_id
+      };
+      console.log(user_data);
+
+      var garden_info = "";
+      // get garden data
+      Gardens.findOne({id: garden_id}).exec(function(err, res){
+        if (err) {
+          console.log(err);
+          console.log('error!.. while finding garden information');
+        }else{
+          console.log(res);
+          garden_info = {
+            Garden_Data : res
+          };
+        }
+      });
+
+
+      var sale_records = "";
+      // get sale record
+      Sales.find({User_id: user_id, Garden_id: garden_id}).exec(function(err, data){
+        if (err) {
+          console.log('error!.. while finding garden sale information');
+        }else{
+          console.log(data);
+          sale_records = {
+            Sale_Data : data
+          };
+        }
+      });
+
+
+      return res.view('record/show', { User_Data: user_data,  Garden_Data: garden_info, Sale_Records: sale_records });
+    }
+
+
+
   }
 
 

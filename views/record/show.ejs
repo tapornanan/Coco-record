@@ -1,0 +1,19 @@
+<%
+  console.log(">Sale Record View<")
+  console.log(User_Data);
+  console.log("-->garden info<--");
+  console.log(Garden_Data);
+  console.log("-->sale data<--");
+  console.log(Sale_Records);
+%>
+
+
+
+
+<input type="hidden" name="_csrf" value="<%= _csrf %>">
+<input type="hidden" name="user_id" value="<%= User_Data.User_id %>">
+<input type="hidden" name="garden_id" value="<%= User_Data.Garden_id %>">
+
+<div class="container">
+  <h4>Garden Name: <%= Garden_Data.Garden_Name %></h4>
+</div>

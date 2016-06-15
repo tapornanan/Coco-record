@@ -7,7 +7,7 @@ module.exports = {
       return res.redirect('/login');
     }else{
       var user_id = req.session.userId;
-      
+
       var user_data = {
         User_id : user_id
       };
@@ -37,7 +37,7 @@ module.exports = {
         return res.redirect('garden/create');
       }else{
         console.log('Insert user into DB');
-        return res.redirect('/garden');
+        return res.redirect('/home');
       }
     });
   }
