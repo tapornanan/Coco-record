@@ -1,19 +1,22 @@
 <%
   console.log(">Sale Record View<")
-  console.log(User_Data);
-  console.log("-->garden info<--");
-  console.log(Garden_Info);
-  console.log("-->sale data<--");
-  console.log(Sale_Data);
+  console.log(Data);
+
 %>
 
 
 
 
 <input type="hidden" name="_csrf" value="<%= _csrf %>">
-<input type="hidden" name="user_id" value="<%= User_Data.User_id %>">
-<input type="hidden" name="garden_id" value="<%= User_Data.Garden_id %>">
+<input type="hidden" name="user_id" value="<%= Data.User_Data.User_id %>">
+<input type="hidden" name="garden_id" value="<%= Data.User_Data.Garden_id %>">
 
 <div class="container">
-  <h4>Garden Name: <%= Garden_Info.Garden_Name %></h4>
+  <h4>Garden Name: <%= Data.Garden_Info.Garden_Info.Garden_Name %></h4>
+  <p>
+    <span>Area: <%= Data.Garden_Info.Garden_Info.Garden_Area %> </span>
+    <span>Total trees: <%= Data.Garden_Info.Garden_Info.Number_Of_Trees %> </span>
+  </p>
+  <br>
+
 </div>

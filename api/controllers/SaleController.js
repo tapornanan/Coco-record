@@ -63,11 +63,11 @@ module.exports = {
     }else{
       var garden_id = req.param("id");
       var user_id = req.session.userId;
-      var user_data = {
+      var User_Data = {
         User_id : user_id,
         Garden_id : garden_id
       };
-      console.log(user_data);
+      console.log(User_Data);
       // get garden data
 
         Gardens.findOne({id: garden_id}).exec(function(err, garden){
@@ -77,7 +77,7 @@ module.exports = {
           }else{
             console.log('garden data...');
             console.log(garden);
-            var garden_info = {
+            var Garden_Info = {
               Garden_Info : garden
             };
 
@@ -87,17 +87,21 @@ module.exports = {
               }else{
                 console.log('Sale data..');
                 console.log(sale);
-                var sales_data = {
+                var Sales_Data = {
                   Sales_Data : sale
                 };
 
                 console.log('Check before show view...');
-                console.log(sales_data);
-                console.log(garden_info);
-                console.log(user_data);
+                console.log(Sales_Data);
+                console.log(Garden_Info);
+                console.log(User_Data);
+
+                var data = { User_Data, Garden_Info, Sales_Data };
+
+
 
                 return res.view('record/show', {
-                  User_Data : user_data,  Garden_Info : garden_info, Sale_Data : sales_data
+                  Data : data
                 });
               }
             }); // end sale
