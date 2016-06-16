@@ -68,43 +68,43 @@ module.exports = {
         Garden_id : garden_id
       };
       console.log(user_data);
-
-      var garden_info = "";
       // get garden data
-      Gardens.findOne({id: garden_id}).exec(function(err, res){
-        if (err) {
-          console.log(err);
-          console.log('error!.. while finding garden information');
-        }else{
-          console.log(res);
-          garden_info = {
-            Garden_Data : res
-          };
-        }
-      });
 
+        Gardens.findOne({id: garden_id}).exec(function(err, garden){
+          if (err) {
+            console.log(err);
+            console.log('error!.. while finding garden information');
+          }else{
+            console.log('garden data...');
+            console.log(garden);
+            var garden_info = {
+              Garden_Info : garden
+            };
 
-      var sale_records = "";
-      // get sale record
-      Sales.find({User_id: user_id, Garden_id: garden_id}).exec(function(err, data){
-        if (err) {
-          console.log('error!.. while finding garden sale information');
-        }else{
-          console.log(data);
-          sale_records = {
-            Sale_Data : data
-          };
-        }
-      });
+            Sales.find({User_id: user_id, Garden_id: garden_id}).exec(function(err, sale){
+              if (err) {
+                console.log('error!.. while finding garden sale information');
+              }else{
+                console.log('Sale data..');
+                console.log(sale);
+                var sales_data = {
+                  Sales_Data : sale
+                };
 
+                console.log('Check before show view...');
+                console.log(sales_data);
+                console.log(garden_info);
+                console.log(user_data);
 
-      return res.view('record/show', { User_Data: user_data,  Garden_Data: garden_info, Sale_Records: sale_records });
+                return res.view('record/show', {
+                  User_Data : user_data,  Garden_Info : garden_info, Sale_Data : sales_data
+                });
+              }
+            }); // end sale
+          }
+        }); //end garden
     }
-
-
-
   }
-
 
 
 
